@@ -1,0 +1,155 @@
+body {
+	background-color: #d0d0d0;
+}
+img {
+	display: block;
+	margin: auto;
+	width: 700px;
+	padding:30px 30px 20px 30px;
+}
+
+.formStyle {
+    font-family: 'Lato';
+    font-weight: 300;
+    width: 1000px;
+    margin-right: auto;
+    margin-left: auto;
+    background: #FFF;
+    padding:30px 30px 20px 0px;
+    box-shadow:rgba(122, 122, 122, 0.7) 0 3px 10px -1px;
+    -webkit-box-shadow:rgba(122, 122, 122, 0.7) 0 3px 10px -1px;
+    font: 12px;
+    color: #666;
+}
+
+.formStyle .reminder {
+	padding-left: 30px;
+	display: block;
+	margin:auto;
+	font-family: 'Lato';
+	font-weight: 300;
+	font-size: 14px;
+	color: red;
+	}
+
+.formStyle h1 {
+    padding: 0px 0px 10px 40px;
+    display: block;
+    border-bottom: 1px solid #F5F5F5;
+    margin: -10px -30px 10px -30px;
+    color: black;
+}
+.formStyle h1>span {
+    display: block;
+    font-size: 20px;
+    text-align: left;
+}
+.formStyle label {
+    display: inline;
+    margin: 0px 0px 5px;
+}
+
+.formStyle .ss-required-asterisk {
+	display: inline;
+	color: red;
+}
+
+.formStyle .ss-form-question {
+	margin: 30px 30px 30px;
+}
+
+.formStyle .ss-q-title{
+	display: inline;
+	font-weight: 400;
+	font-size: 20px;
+}
+
+.formStyle .required-message{
+	color: red;
+	font-size: 12px;
+	display: none;
+}
+
+.formStyle .ss-choice-item {
+	display: inline-block;
+	list-style-type:none;
+}
+
+.formStyle .ss-secondary-text{
+	font-weight: 300;
+	font-size: 14px;
+}
+.formStyle label>span {
+    float: left;
+    width: auto;
+    text-align: right;
+    padding-right: 10px;
+    color: #808080;
+}
+.formStyle input[type="text"], .formStyle input[type="email"], .formStyle textarea,.formStyle select, .formStyle input[type="password"] {
+    color: #555;
+    width: 65%;
+    padding: 3px 3px 3px 8px;
+    margin-top: 2px;
+    margin-right: 6px;
+    margin-bottom: 16px;
+    border: 1px solid #e5e5e5;
+    background: #fbfbfb;
+    outline: 0;
+    -webkit-box-shadow: inset 1px 1px 2px rgba(200,200,200,0.2);
+    box-shadow: inset 1px 1px 2px rgba(200,200,200,0.2);
+    font: normal 12px/24px;
+}
+
+.formStyle .msg{
+	font-size: 12px;
+}
+
+.formStyle textarea{
+    height:100px;
+}
+.formStyle .button {
+    -moz-box-shadow:inset 0px 1px 0px 0px #d0d0d0;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #d0d0d0;
+    box-shadow:inset 0px 1px 0px 0px #d0d0d0;
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #d3d3d3), color-stop(1, #d0d0d0) );
+    background:-moz-linear-gradient( center top, #d3d3d3d 5%, #d0d0d0 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d3d3d3', endColorstr='#d0d0d0');
+    background-color:#d3d3d3;
+    border-radius:9px;
+    -webkit-border-radius:9px;
+    -moz-border-border-radius:9px;
+    border:1px solid #d3d3d3;
+    display:inline-block;
+    color:black;
+    font-family: 'Lato';
+    font-weight: 300;
+    font-size:14px;
+    font-style:normal;
+    height:30px;
+    line-height:28px;
+    width: auto;
+    text-decoration:none;
+    text-align:center;
+}
+.formStyle .button:hover {
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #d3d3d3), color-stop(1, #d0d0d0) );
+    background:-moz-linear-gradient( center top, #d3d3d3 5%, #d0d0d0 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d3d3d3', endColorstr='#d0d0d0');
+    background-color:#d0d0d0;
+	cursor: pointer;
+}
+.formStyle .button:active {
+    position:relative;
+    top:1px;
+}
+.formStyle select {
+    background: url('down-arrow.png') no-repeat right, -moz-linear-gradient(top, #FBFBFB 0%, #E9E9E9 100%);
+    background: url('down-arrow.png') no-repeat right, -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FBFBFB), color-stop(100%,#E9E9E9));
+   appearance:none;
+    -webkit-appearance:none;
+   -moz-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: '';
+    width: 67%;
+}

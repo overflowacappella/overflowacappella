@@ -1,240 +1,295 @@
-<html>
+<html lang="en">
+
 <head>
-<style>
-@import "compass/css3";
+<link href='https://fonts.googleapis.com/css?family=Lato:100,300,400' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+<link href='mainstyles.css' rel='stylesheet' type='text/css'>
+<title>HKUYLAA Application Form</title>
+<script type="text/javascript">
+window.onload = function() {
+	var first = document.getElementById("group_1583083072_1");
+	var second = document.getElementById("group_1583083072_2");
+	var third = document.getElementById("group_1583083072_3");
+	var all = [first, second, third]	
 
-// Font imports
+	first.addEventListener("click", function() { var trd = [third]; 
+	checkelem(first,trd);
+	checkall(all);
+	}, false);
+	second.addEventListener("click", function() { var trd = [third];
+	checkelem(second,trd);
+	checkall(all);
+	}, false);
+	third.addEventListener("click", function() { 
+	var arr = [first, second];
+	checkelem(third, arr);
+	checkall(all);
+	}, false);
+	
+};	
 
-@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
-
-// Color vars
-
-$white: #fff;
-$grey: #ccc;
-$dark_grey: #555;
-$blue: #4f6fad;
-$pink: #ee9cb4;
-
-// Mixins
-
-@mixin lato-book { font-family: 'Lato', sans-serif; font-weight: 300; }
-@mixin lato-reg { font-family: 'Lato', sans-serif; font-weight: 400; }
-@mixin lato-bold { font-family: 'Lato', sans-serif; font-weight: 700; }
-@mixin btn($color) {
-  background-color: $color;
-  border-bottom-color: darken($color, 15%);
-  &:hover {
-      background-color: lighten($color, 5%);
-    }
+function checkall(all) {
+	var checked = false;
+	for (var i = 0; i < all.length; i++) {
+		if(all[i].checked) {
+		checked = true;
+		}
+	}
+	for (var i = 0; i < all.length; i++) {
+		if(checked) {
+			all[i].required = '';		
+		}
+		else {
+			all[i].required = 'required';
+		}
+	}
+	
 }
 
-// Functions
-
-@function pxtoem($target, $context){
-  @return ($target/$context)+0em;
+function checkelem(caller, elem) {
+	if(caller.checked) {
+		for(var i = 0; i < elem.length; i++){
+			if(elem[i].checked) {
+				elem[i].checked = false;
+			}
+		}
+	}
 }
-
-//
-
-body {
-  background-color: lighten($grey, 10%);
-  font-size: 100%;
-  @include lato-reg;
-}
-div, textarea, input {
-  @include box-sizing(border-box);
-}
-.container {
-  max-width: 510px;
-  min-width: 324px;
-  margin: 50px auto 0px;
-  background-color: $white;
-  border: 1px solid lighten($grey, 1%);
-  border-bottom: 3px solid $grey;
-}
-.row {
-  width: 100%;
-  margin: 0 0 1em 0;
-  padding: 0 2.5em;
-  &.header {
-    padding: 1.5em 2.5em;
-    border-bottom: 1px solid $grey;
-    background: url(http://niiiick.com/files/blur-city-1.jpg) left -80px;
-    color: $white;
-  }
-  &.body {
-    padding: .5em 2.5em 1em;
-  }
-}
-.pull-right {
-  float: right;
-}
-h1 {
-  @include lato-book;
-  display: inline-block;
-  font-weight: 100;
-  font-size: pxtoem(45, 16);
-  border-bottom: 1px solid hsla(100%, 100%, 100%, 0.3);
-  margin: 0 0 0.1em 0;
-  padding: 0 0 0.4em 0;
-}
-h3 {
-  @include lato-reg;
-  font-size: pxtoem(20, 16);
-  margin: 1em 0 0.4em 0;
-}
-.btn {
-  font-size: pxtoem(17, 16);
-  display: inline-block;
-  padding: 0.74em 1.5em;
-  margin: 1.5em 0 0;
-  color: $white;
-  border-width: 0 0 0 0;
-  border-bottom: 5px solid;
-  text-transform: uppercase;
-  @include btn(darken($grey, 10%));
-  @include lato-book;
-  &.btn-submit {
-    @include btn($blue);
-  }
-}
-
-form {
-  max-width: 100%;
-  display: block;
-  ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    li {
-      margin: 0 0 0.25em 0;
-      clear: both;
-      display: inline-block;
-      width: 100%;
-      &:last-child {
-          margin: 0;
-        }
-        p {
-          margin: 0;
-          padding: 0;
-          float: left;
-          &.right {
-            float: right;
-          }
-        }
-        .divider {
-          margin: 0.5em 0 0.5em 0;
-          border: 0;
-          height: 1px;
-          width: 100%;
-          display: block;
-          background-color: $blue;
-          background-image: linear-gradient(to right, $pink, $blue);
-        }
-        .req {
-          color: $pink;
-        }
-    }
-  }
-  label {
-    display: block;
-    margin: 0 0 0.5em 0;
-    color: $blue;
-    font-size: pxtoem(16, 16);
-  }
-  input {
-    margin: 0 0 0.5em 0;
-    border: 1px solid $grey;
-    padding: 6px 10px;
-    color: $dark_grey;
-    font-size: pxtoem(16, 16);
-  }
-  textarea {
-    border: 1px solid $grey;
-    padding: 6px 10px;
-    width: 100%;
-    color: $dark_grey;
-  }
-  small {
-    color: $blue;
-    margin: 0 0 0 0.5em;
-  }
-}
-
-// Media Queries
-
-@media only screen and (max-width:480px) {
-  .pull-right {
-    float: none;
-  }
-  input {
-    width: 100%;
-  }
-  label {
-    width: 100%;
-    display: inline-block;
-    float: left;
-    clear: both;
-  }
-  li, p {
-   width: 100%;
-  }
-  input.btn {
-   margin: 1.5em 0 0.5em;
-  }
-  h1 {
-   font-size: pxtoem(36, 16);
-  }
-  h3 {
-    font-size: pxtoem(18, 16)
-  }
-  li small {
-   display: none;
-  }
-}
-</style>
+</script>
 </head>
+
 <body>
-<div class="container">
-  <div class="row header">
-    <h1>CONTACT US &nbsp;</h1>
-    <h3>Fill out the form below to learn more!</h3>
-  </div>
-  <div class="row body">
-    <form action="#">
-      <ul>
+<img src="aalogo.png">
+<br>
+<script type="text/javascript">var submitted=false;</script>
+<iframe name="redirect" id="redirect"
+style="display:none;" onload="if(submitted) {
+window.location='/submitted.html';
+}"></iframe>
 
-        <li>
-          <p class="left">
-            <label for="first_name">first name</label>
-            <input type="text" name="first_name" placeholder="John" />
-          </p>
-          <p class="pull-right">
-            <label for="last_name">last name</label>
-            <input type="text" name="last_name" placeholder="Smith" />
-          </p>
-        </li>
-
-        <li>
-          <p>
-            <label for="email">email <span class="req">*</span></label>
-            <input type="email" name="email" placeholder="john.smith@gmail.com" />
-          </p>
-        </li>
-        <li><div class="divider"></div></li>
-        <li>
-          <label for="comments">comments</label>
-          <textarea cols="46" rows="3" name="comments"></textarea>
-        </li>
-
-        <li>
-          <input class="btn btn-submit" type="submit" value="Submit" />
-          <small>or press <strong>enter</strong></small>
-        </li>
-
-      </ul>
-    </form>
-  </div>
+<form class="formStyle" action="https://docs.google.com/forms/d/1S2_OLrf5xshCNhcc24VG62DCyQJNFH_Y_GDzU7lg9yc/formResponse" method="post" id="ss-form" target="redirect" onsubmit="submitted=true;"><ol role="list" class="ss-question-list">
+<span class="reminder">* This is a required field</span>
+<div class="ss-form-question errorbox-good" role="listitem">
+<div dir="ltr" class="ss-item ss-item-required ss-text"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_1875911903"><div class="ss-q-title">Name (English)<label for="itemView.getDomIdToLabel()" aria-label="(Required field)"></label>
+<span class="ss-required-asterisk">*</span></div>
+<div class="ss-q-help ss-secondary-text" dir="ltr">Please fill in your name as it appears on your HKID / Passport.</div></label>
+<input type="text" name="entry.1875911903" value="" class="ss-q-short" id="entry_1875911903" dir="auto" aria-label="Name (English) Please fill in your name as it appears on your HKID / Passport. " aria-required="true" required="" title="">
+<div class="error-message" id="1056507983_errorMessage"></div>
+<div class="required-message">This is a required question</div>
+</div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
+<div dir="ltr" class="ss-item ss-item-required ss-text"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_1813603225"><div class="ss-q-title">Name (Chinese)
+<label for="itemView.getDomIdToLabel()" aria-label="(Required field)"></label>
+<span class="ss-required-asterisk">*</span></div>
+<div class="ss-q-help ss-secondary-text" dir="ltr"></div></label>
+<input type="text" name="entry.1813603225" value="" class="ss-q-short" id="entry_1813603225" dir="auto" aria-label="Name (Chinese)  " aria-required="true" required="" title="">
+<div class="error-message" id="684076121_errorMessage"></div>
+<div class="required-message">This is a required question</div>
+</div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
+<div dir="ltr" class="ss-item ss-item-required ss-text"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_1758042601"><div class="ss-q-title">Common Name / Nickname
+<label for="itemView.getDomIdToLabel()" aria-label="(Required field)"></label>
+<span class="ss-required-asterisk" aria-hidden="true">*</span></div>
+<div class="ss-q-help ss-secondary-text" dir="ltr">How would you like to be addressed in our emails?</div></label>
+<input type="text" name="entry.1758042601" value="" class="ss-q-short" id="entry_1758042601" dir="auto" aria-label="Common Name / Nickname How would you like to be addressed in our emails? " aria-required="true" required="" title="">
+<div class="error-message" id="180838777_errorMessage"></div>
+<div class="required-message">This is a required question</div>
+</div></div></div>  <div class="ss-form-question errorbox-good" role="listitem">
+<div dir="ltr" class="ss-item  ss-text"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_141773225"><div class="ss-q-title">Session (Camper, if any)
 </div>
+<div class="ss-q-help ss-secondary-text" dir="ltr"></div></label>
+<input type="text" name="entry.141773225" value="" class="ss-q-short" id="entry_141773225" dir="auto" aria-label="Session (Camper, if any)  " title="">
+<div class="error-message" id="242732489_errorMessage"></div>
+<div class="required-message">This is a required question</div>
+</div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
+<div dir="ltr" class="ss-item  ss-text"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_1068115488"><div class="ss-q-title">Session (Committee Member, if any)
+</div>
+<div class="ss-q-help ss-secondary-text" dir="ltr"></div></label>
+<input type="text" name="entry.1068115488" value="" class="ss-q-short" id="entry_1068115488" dir="auto" aria-label="Session (Committee Member, if any)  " title="">
+<div class="error-message" id="2077289628_errorMessage"></div>
+<div class="required-message">This is a required question</div>
+</div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
+<div dir="ltr" class="ss-item  ss-text"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_518774444"><div class="ss-q-title">Post in HKUYL Committee Board (if any)
+</div>
+<div class="ss-q-help ss-secondary-text" dir="ltr">(e.g. Chairperson, Vice-chairperson, Internal / External Secretary, Treasurer, Publicity Officer, Promotion Manager, PO / PM Sub-Committee Member)</div></label>
+<input type="text" name="entry.518774444" value="" class="ss-q-short" id="entry_518774444" dir="auto" aria-label="Post in HKUYL Committee Board (if any) (e.g. Chairperson, Vice-chairperson, Internal / External Secretary, Treasurer, Publicity Officer, Promotion Manager, PO / PM Sub-Committee Member) " title="">
+<div class="error-message" id="1576236946_errorMessage"></div>
+<div class="required-message">This is a required question</div>
+</div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
+<div dir="ltr" class="ss-item ss-item-required ss-text"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_1102994544"><div class="ss-q-title">Phone Number (Mobile)
+<label for="itemView.getDomIdToLabel()" aria-label="(Required field)"></label>
+<span class="ss-required-asterisk">*</span></div>
+<div class="ss-q-help ss-secondary-text" dir="ltr"></div></label>
+<input type="text" name="entry.1102994544" value="" class="ss-q-short" id="entry_1102994544" dir="auto" aria-label="Phone Number (Mobile)  " aria-required="true" required="" title="">
+<div class="error-message" id="1249920409_errorMessage"></div>
+<div class="required-message">This is a required question</div>
+</div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
+<div dir="ltr" class="ss-item  ss-text"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_70576976"><div class="ss-q-title">Phone Number (Work)
+</div>
+<div class="ss-q-help ss-secondary-text" dir="ltr"></div></label>
+<input type="text" name="entry.70576976" value="" class="ss-q-short" id="entry_70576976" dir="auto" aria-label="Phone Number (Work)  " title="">
+<div class="error-message" id="573169437_errorMessage"></div>
+<div class="required-message">This is a required question</div>
+</div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
+<div dir="ltr" class="ss-item ss-item-required ss-text"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_361929767"><div class="ss-q-title">Email Address
+<label for="itemView.getDomIdToLabel()" aria-label="(Required field)"></label>
+<span class="ss-required-asterisk">*</span></div>
+<div class="ss-q-help ss-secondary-text" dir="ltr">This will be used as the primary form of communication.</div></label>
+<input type="email" name="entry.361929767" value="" class="ss-q-short" id="entry_361929767" dir="auto" aria-label="Email Address This will be used as the primary form of communication. Please enter a valid email address." aria-required="true" required="" title="Please enter a valid email address.">
+<div class="error-message" id="828985103_errorMessage">Please enter a valid email address.</div>
+<div class="required-message">This is a required question</div>
+</div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
+<div dir="ltr" class="ss-item  ss-paragraph-text"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_1403899437"><div class="ss-q-title">Contact Address
+</div>
+<div class="ss-q-help ss-secondary-text" dir="ltr">Please provide your address if you would like to receive a hard-copy of newsletters from HKUYL</div></label>
+<textarea name="entry.1403899437" rows="8" cols="0" class="ss-q-long" id="entry_1403899437" dir="auto" aria-label="Contact Address Please provide your address if you would like to receive a hard-copy of newsletters from HKUYL "></textarea>
+<div class="error-message" id="1543424577_errorMessage"></div>
+<div class="required-message">This is a required question</div>
+</div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
+<div dir="ltr" class="ss-item  ss-checkbox"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_103423581"><div class="ss-q-title">Place of Residence
+</div>
+<div class="ss-q-help ss-secondary-text" dir="ltr">The Overseas Chapter of the HKUYLAA may hold reunion activities for alumni outside of Hong Kong.</div></label>
+
+<ul class="ss-choices" role="group" aria-label="Place of Residence The Overseas Chapter of the HKUYLAA may hold reunion activities for alumni outside of Hong Kong. "><li class="ss-choice-item"><label><span class="ss-choice-item-control goog-inline-block"><input type="checkbox" name="entry.745339034" value="Hong Kong" id="group_745339034_1" role="checkbox" class="ss-q-checkbox"></span>
+<span class="ss-choice-label">Hong Kong</span>
+</label></li> <li class="ss-choice-item"><label><span class="ss-choice-item-control goog-inline-block"><input type="checkbox" name="entry.745339034" value="Mainland China" id="group_745339034_2" role="checkbox" class="ss-q-checkbox"></span>
+<span class="ss-choice-label">Mainland China</span>
+</label></li> <li class="ss-choice-item"><label><span class="ss-choice-item-control goog-inline-block"><input type="checkbox" name="entry.745339034" value="United Kingdom" id="group_745339034_3" role="checkbox" class="ss-q-checkbox"></span>
+<span class="ss-choice-label">United Kingdom</span>
+</label></li> <li class="ss-choice-item"><label><span class="ss-choice-item-control goog-inline-block"><input type="checkbox" name="entry.745339034" value="United States" id="group_745339034_4" role="checkbox" class="ss-q-checkbox"></span>
+<span class="ss-choice-label">United States</span>
+</label></li> <li class="ss-choice-item"><label><span class="ss-choice-item-control goog-inline-block"><input type="checkbox" name="entry.745339034" value="Australia / New Zealand" id="group_745339034_5" role="checkbox" class="ss-q-checkbox"></span>
+<span class="ss-choice-label">Australia / New Zealand</span>
+</label></li> <li class="ss-choice-item"><label><span class="ss-choice-item-control goog-inline-block"><input type="checkbox" name="entry.745339034" value="__other_option__" id="group_745339034_6" role="checkbox" class="ss-q-checkbox ss-q-other-toggle"></span>
+<span class="ss-choice-label">Other:</span></label>
+<span class="ss-q-other-container goog-inline-block"><input type="text" name="entry.745339034.other_option_response" value="" class="ss-q-other" id="entry_745339034_other_option_response" dir="auto" aria-label="Other"></span>
+</li></ul>
+<div class="error-message" id="103423581_errorMessage"></div>
+<div class="required-message">This is a required question</div></div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
+<div dir="ltr" class="ss-item ss-item-required ss-text"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_1306495686"><div class="ss-q-title">Secondary School (Full Name)
+<label for="itemView.getDomIdToLabel()" aria-label="(Required field)"></label>
+<span class="ss-required-asterisk">*</span></div>
+<div class="ss-q-help ss-secondary-text" dir="ltr">If you had attended more than one secondary school, please fill in all of them with a &quot; / &quot; in between (e.g. Diocesan Boys&#39; School / Li Po Chun United World College of Hong Kong)</div></label>
+<input type="text" name="entry.1306495686" value="" class="ss-q-short" id="entry_1306495686" dir="auto" aria-label="Secondary School (Full Name) If you had attended more than one secondary school, please fill in all of them with a &quot; / &quot; in between (e.g. Diocesan Boys&#39; School / Li Po Chun United World College of Hong Kong) " aria-required="true" required="" title="">
+<div class="error-message" id="1075860111_errorMessage"></div>
+<div class="required-message">This is a required question</div>
+</div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
+<div dir="ltr" class="ss-item  ss-text"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_1163279217"><div class="ss-q-title">University / Tertiary Education (Full Name)
+</div>
+<div class="ss-q-help ss-secondary-text" dir="ltr"></div></label>
+<input type="text" name="entry.1163279217" value="" class="ss-q-short" id="entry_1163279217" dir="auto" aria-label="University / Tertiary Education (Full Name)  " title="">
+<div class="error-message" id="1699856548_errorMessage"></div>
+<div class="required-message">This is a required question</div>
+</div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
+<div dir="ltr" class="ss-item  ss-text"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_73762508"><div class="ss-q-title">First Degree
+</div>
+<div class="ss-q-help ss-secondary-text" dir="ltr"></div></label>
+<input type="text" name="entry.73762508" value="" class="ss-q-short" id="entry_73762508" dir="auto" aria-label="First Degree  " title="">
+<div class="error-message" id="270426297_errorMessage"></div>
+<div class="required-message">This is a required question</div>
+</div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
+<div dir="ltr" class="ss-item  ss-text"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_1805327016"><div class="ss-q-title">(Expected) Year of Graduation
+</div>
+<div class="ss-q-help ss-secondary-text" dir="ltr"></div></label>
+<input type="text" name="entry.1805327016" value="" class="ss-q-short" id="entry_1805327016" dir="auto" aria-label="(Expected) Year of Graduation  " title="">
+<div class="error-message" id="1610858793_errorMessage"></div>
+<div class="required-message">This is a required question</div>
+</div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
+<div dir="ltr" class="ss-item  ss-paragraph-text"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_400884033"><div class="ss-q-title">Other Degrees &amp; Qualifications
+</div>
+<div class="ss-q-help ss-secondary-text" dir="ltr"></div></label>
+<textarea name="entry.400884033" rows="8" cols="0" class="ss-q-long" id="entry_400884033" dir="auto" aria-label="Other Degrees &amp; Qualifications  "></textarea>
+<div class="error-message" id="1043033914_errorMessage"></div>
+<div class="required-message">This is a required question</div>
+</div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
+<div dir="ltr" class="ss-item  ss-text"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_1805801607"><div class="ss-q-title">Job Title
+</div>
+<div class="ss-q-help ss-secondary-text" dir="ltr"></div></label>
+<input type="text" name="entry.1805801607" value="" class="ss-q-short" id="entry_1805801607" dir="auto" aria-label="Job Title  " title="">
+<div class="error-message" id="1063062579_errorMessage"></div>
+<div class="required-message">This is a required question</div>
+</div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
+<div dir="ltr" class="ss-item  ss-text"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_2105309141"><div class="ss-q-title">Career Field
+</div>
+<div class="ss-q-help ss-secondary-text" dir="ltr">(or Career Prospect)</div></label>
+<input type="text" name="entry.2105309141" value="" class="ss-q-short" id="entry_2105309141" dir="auto" aria-label="Career Field (or Career Prospect) " title="">
+<div class="error-message" id="682922467_errorMessage"></div>
+<div class="required-message">This is a required question</div>
+</div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
+<div dir="ltr" class="ss-item  ss-paragraph-text"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_1681531311"><div class="ss-q-title">Personal Interests
+</div>
+<div class="ss-q-help ss-secondary-text" dir="ltr">The HKUYLAA may arrange activities for alumni with similar personal interests</div></label>
+<textarea name="entry.1681531311" rows="8" cols="0" class="ss-q-long" id="entry_1681531311" dir="auto" aria-label="Personal Interests The HKUYLAA may arrange activities for alumni with similar personal interests "></textarea>
+<div class="error-message" id="323638437_errorMessage"></div>
+<div class="required-message">This is a required question</div>
+</div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
+<div dir="ltr" class="ss-item ss-item-required ss-checkbox"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_2119639740"><div class="ss-q-title">Mentorship Scheme
+<label for="itemView.getDomIdToLabel()" aria-label="(Required field)"></label>
+<span class="ss-required-asterisk">*</span></div>
+<div class="ss-q-help ss-secondary-text" dir="ltr">One of our aims is to facilitate the exchange of experience among alumni from different sessions. The Committee is now launching a mentorship scheme, of which senior alumni may have the chance to share experiences to younger alumni, in occasions such as JUPAS Counselling. Please check the following box(es) if you would like to be our Mentor and/or Mentee.</div></label>
+
+<ul class="ss-choices ss-choices-required" role="group" aria-label="Mentorship Scheme One of our aims is to facilitate the exchange of experience among alumni from different sessions. The Committee is now launching a mentorship scheme, of which senior alumni may have the chance to share experiences to younger alumni, in occasions such as JUPAS Counselling. Please check the following box(es) if you would like to be our Mentor and/or Mentee. "><li class="ss-choice-item"><label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.1926729010" value="I wish to participate in the HKUYLAA Mentorship Scheme." id="group_1926729010_1" role="radio" class="ss-q-radio" aria-required="true" required="required"></span>
+<span class="ss-choice-label">I wish to participate in the HKUYLAA Mentorship Scheme.</span>
+</label></li> <li class="ss-choice-item"><label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.1926729010" value="I do not wish to participate in the HKUYLAA Mentorship Scheme." id="group_1926729010_2" role="radio" class="ss-q-radio" aria-required="true" required="required"></span>
+<span class="ss-choice-label">I do not wish to participate in the HKUYLAA Mentorship Scheme.</span>
+</label></li></ul>
+<div class="error-message" id="2119639740_errorMessage"></div>
+<div class="required-message">This is a required question</div></div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
+<div dir="ltr" class="ss-item ss-item-required ss-radio"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_1451511871"><div class="ss-q-title">Organizing Committee
+<label for="itemView.getDomIdToLabel()" aria-label="(Required field)"></label>
+<span class="ss-required-asterisk">*</span></div>
+<div class="ss-q-help ss-secondary-text" dir="ltr">The HKUYLAA aims to organize various activities to enhance the communication among our fellow alumni. We shall invite our alumni to be part of the &quot;Organizing Committee&quot; for each activity. Please check the appropriate box if you would like to receive such invitations through email in the future.</div></label>
+
+<ul class="ss-choices ss-choices-required" role="group" aria-label="Organizing Committee The HKUYLAA aims to organize various activities to enhance the communication among our fellow alumni. We shall invite our alumni to be part of the &quot;Organizing Committee&quot; for each activity. Please check the appropriate box if you would like to receive such invitations through email in the future. "><li class="ss-choice-item"><label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.1697700939" value="I wish to be invited to be part of the Organizing Committee of HKUYLAA activities in the future." id="group_1697700939_1" role="radio" class="ss-q-radio" aria-required="true" required="required"></span>
+<span class="ss-choice-label">I wish to be invited to be part of the Organizing Committee of HKUYLAA activities in the future.</span>
+</label></li> <li class="ss-choice-item"><label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.1697700939" value="I do not wish to receive such invitations." id="group_1697700939_2" role="radio" class="ss-q-radio" aria-required="true" required="required"></span>
+<span class="ss-choice-label">I do not wish to receive such invitations.</span>
+</label></li></ul>
+<div class="error-message" id="1451511871_errorMessage"></div>
+<div class="required-message">This is a required question</div></div></div></div> <div class="ss-form-question errorbox-good" role="listitem">
+<div dir="ltr" class="ss-item ss-item-required ss-checkbox"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_1545655206"><div class="ss-q-title">Communication
+<label for="itemView.getDomIdToLabel()" aria-label="(Required field)"></label>
+<span class="ss-required-asterisk">*</span></div>
+<div class="ss-q-help ss-secondary-text" dir="ltr">Except the report of the Union&#39;s activities, newsletters published by HKUYL will now include an alumni column, and will offer e-copies for alumni. Please check the corresponding box(es) if you would like to receive the newsletters from HKUYL regularly.</div></label>
+
+<ul class="ss-choices ss-choices-required" role="group" aria-label="Communication Except the report of the Union&#39;s activities, newsletters published by HKUYL will now include an alumni column, and will offer e-copies for alumni. Please check the corresponding box(es) if you would like to receive the newsletters from HKUYL regularly. Must select at least 0 options."><li class="ss-choice-item"><label><span class="ss-choice-item-control goog-inline-block"><input type="checkbox" name="entry.1583083072" value="Please send me an e-copy of HKUYL newsletters. (Please double check the email address that you have supplied.)" id="group_1583083072_1" role="checkbox" class="ss-q-checkbox" aria-required="true" required="required"></span>
+<span class="ss-choice-label">Please send me an e-copy of HKUYL newsletters. (Please double check the email address that you have supplied.)</span>
+</label></li> <li class="ss-choice-item"><label><span class="ss-choice-item-control goog-inline-block"><input type="checkbox" name="entry.1583083072" value="Please send me a hard-copy of HKUYL newsletters. (Please ensure you have supplied a valid mailing address.)" id="group_1583083072_2" role="checkbox" class="ss-q-checkbox" aria-required="true" required="required"></span>
+<span class="ss-choice-label">Please send me a hard-copy of HKUYL newsletters. (Please ensure you have supplied a valid mailing address.)</span>
+</label></li> <li class="ss-choice-item"><label><span class="ss-choice-item-control goog-inline-block"><input type="checkbox" name="entry.1583083072" value="I do not want to receive newsletters from HKUYL." id="group_1583083072_3" role="checkbox" class="ss-q-checkbox" aria-required="true" required="required"></span>
+<span class="ss-choice-label">I do not want to receive newsletters from HKUYL.</span>
+</label></li></ul>
+<div style="display: none;" class="error-message" id="1545655206_errorMessage">Must select at least 0 options.</div>
+<div class="required-message">This is a required question</div></div></div></div>
+<input type="hidden" name="draftResponse" value="[,,&quot;-8861494867859427942&quot;]
+">
+<input type="hidden" name="pageHistory" value="0">
+
+
+<input type="hidden" name="fbzx" value="-8861494867859427942">
+<div class="ss-item ss-navigate"><table id="navigation-table"><tbody><tr><td class="ss-form-entry goog-inline-block" id="navigation-buttons" dir="ltr">
+<input class="button" type="submit" name="submit" value="Submit" id="ss-submit">
+</td></tr></tbody></table></div></ol></form>
 </body>
+
 </html>
