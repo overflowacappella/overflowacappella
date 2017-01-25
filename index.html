@@ -10,9 +10,9 @@ window.onload = function() {
 	var first = document.getElementById("group_1583083072_1");
 	var second = document.getElementById("group_1583083072_2");
 	var third = document.getElementById("group_1583083072_3");
-	var all = [first, second, third]	
+	var all = [first, second, third]
 
-	first.addEventListener("click", function() { var trd = [third]; 
+	first.addEventListener("click", function() { var trd = [third];
 	checkelem(first,trd);
 	checkall(all);
 	}, false);
@@ -20,13 +20,13 @@ window.onload = function() {
 	checkelem(second,trd);
 	checkall(all);
 	}, false);
-	third.addEventListener("click", function() { 
+	third.addEventListener("click", function() {
 	var arr = [first, second];
 	checkelem(third, arr);
 	checkall(all);
 	}, false);
-	
-};	
+
+};
 
 function checkall(all) {
 	var checked = false;
@@ -37,13 +37,13 @@ function checkall(all) {
 	}
 	for (var i = 0; i < all.length; i++) {
 		if(checked) {
-			all[i].required = '';		
+			all[i].required = '';
 		}
 		else {
 			all[i].required = 'required';
 		}
 	}
-	
+
 }
 
 function checkelem(caller, elem) {
@@ -59,7 +59,7 @@ function checkelem(caller, elem) {
 </head>
 
 <body>
-<img src="aalogo.png">
+<img src="overflow.png">
 <br>
 <script type="text/javascript">var submitted=false;</script>
 <iframe name="redirect" id="redirect"
